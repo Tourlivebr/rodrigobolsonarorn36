@@ -1,0 +1,45 @@
+{
+  "name": "Rodrigo Bolsonaro - Portal Informativo RN 2026",
+  "short_name": "Rodrigo Bolsonaro RN",
+  "description": "Portal institucional informativo sobre Rodrigo Bolsonaro, pré-candidato ao Governo do Rio Grande do Norte em 2026. Propostas, perfil e ações.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "theme_color": "#009c3b",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/img/Logo_Rodrigobolsonaro36.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/img/Logo_Rodrigobolsonaro36.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["news", "politics", "reference"],
+  "shortcuts": [
+    {
+      "name": "Perfil Institucional",
+      "url": "/#inicio",
+      "description": "Quem é Rodrigo Bolsonaro"
+    },
+    {
+      "name": "Propostas",
+      "url": "/#propostas",
+      "description": "Categorias de propostas"
+    },
+    {
+      "name": "FAQ",
+      "url": "/#faq",
+      "description": "Perguntas frequentes"
+    }
+  ]
+}

@@ -7,9 +7,16 @@ import Metrics from '@components/Metrics.astro';
 import FAQ from '@components/FAQ.astro';
 import ContactForm from '@components/ContactForm.astro';
 import Footer from '@components/Footer.astro';
+import { siteConfig } from '@data/site';
 ---
 
-<Layout>
+<Layout
+  title=""
+  description={siteConfig.description}
+  canonical="/"
+  image="/og-image.jpg"
+  breadcrumbs={[{ name: 'Início', url: '/' }]}
+>
   <Header />
   <About />
   <ProposalSection />

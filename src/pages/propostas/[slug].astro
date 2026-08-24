@@ -25,12 +25,36 @@ const bannerBg: Record<string, string> = {
   'seguranca-publica': 'from-blue-50 via-white to-amber-50',
   'educacao-acao-social-esporte': 'from-emerald-50 via-white to-yellow-50',
 };
+
+const seoKeywords = [
+  proposal.categoria,
+  proposal.titulo,
+  'propostas',
+  'plano de governo RN 2026',
+  'Rodrigo Bolsonaro',
+  siteConfig.author.partido,
+  'Rio Grande do Norte',
+  'Natal',
+  'eleições 2026',
+];
+
+const seoImage = proposal.imagem?.startsWith('http')
+  ? proposal.imagem
+  : new URL(proposal.imagem || '/og-image.jpg', Astro.site ?? siteConfig.url).toString();
 ---
 
 <Layout
   title={`Propostas: ${proposal.titulo}`}
-  description={proposal.descricao}
+  description={proposal.resumo || proposal.descricao}
+  image={seoImage}
   canonical={`/propostas/${proposal.slug}/`}
+  keywords={seoKeywords}
+  type="article"
+  breadcrumbs={[
+    { name: 'Início', url: siteConfig.url + '/' },
+    { name: 'Propostas', url: siteConfig.url + '/#propostas' },
+    { name: proposal.titulo, url: `${siteConfig.url}/propostas/${proposal.slug}/` },
+  ]}
 >
   <Header />
 

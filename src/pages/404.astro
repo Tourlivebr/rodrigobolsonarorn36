@@ -4,7 +4,19 @@ import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 ---
 
-<Layout title="Página não encontrada" noIndex={true}>
+<Layout
+  title="Página não encontrada"
+  description="A página que você procura não existe ou foi movida no portal institucional de Rodrigo Bolsonaro."
+  noIndex={true}
+  keywords={[
+    '404',
+    'página não encontrada',
+    'Rodrigo Bolsonaro',
+    'Rio Grande do Norte',
+    'not found',
+  ]}
+  breadcrumbs={[{ name: 'Início', url: '/' }, { name: '404', url: '/404' }]}
+>
   <Header />
   <section class="section flex items-center justify-center">
     <div class="container-wide px-4 text-center max-w-xl">
