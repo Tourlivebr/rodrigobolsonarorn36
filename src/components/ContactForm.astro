@@ -184,16 +184,22 @@ const { author, contact } = siteConfig;
 </section>
 
 <script>
+  /// <reference lib="dom" />
+  /// <reference lib="es2015" />
+  /// <reference lib="es2017.object" />
+  /// <reference lib="es2015.promise" />
+  /// <reference lib="es2015.iterable" />
+
   type FieldName = 'nome' | 'email' | 'telefone' | 'cidade' | 'assunto' | 'mensagem';
 
   const formEl = document.getElementById('contact-form') as HTMLFormElement | null;
   if (!formEl) throw new Error('form not found');
   const form: HTMLFormElement = formEl;
 
-  const label = form.querySelector<HTMLElement>('[data-label]');
-  const loadingEl = form.querySelector<HTMLElement>('[data-loading]');
-  const successEl = form.querySelector<HTMLElement>('[data-feedback="success"]');
-  const errorEl = form.querySelector<HTMLElement>('[data-feedback="error"]');
+  const label = form.querySelector('[data-label]') as HTMLElement | null;
+  const loadingEl = form.querySelector('[data-loading]') as HTMLElement | null;
+  const successEl = form.querySelector('[data-feedback="success"]') as HTMLElement | null;
+  const errorEl = form.querySelector('[data-feedback="error"]') as HTMLElement | null;
 
   const setBtnLoading = (loading_: boolean) => {
     if (!label || !loadingEl) return;
@@ -207,17 +213,19 @@ const { author, contact } = siteConfig;
     errorEl?.classList.toggle('hidden', type !== 'error');
   };
 
-  const validators: Record<FieldName, (value: string) => string> = {
-    nome: (v) => (v.trim().length < 3 ? 'Informe um nome válido (mínimo 3 caracteres).' : ''),
-    email: (v) => (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? 'Informe um e-mail válido.' : ''),
-    telefone: (v) => (v && v.replace(/\D/g, '').length < 10 ? 'Telefone inválido (quando informado).' : ''),
-    cidade: (v) => (v.trim().length < 2 ? 'Informe sua cidade.' : ''),
-    assunto: (v) => (v.trim().length < 3 ? 'Informe o assunto.' : ''),
-    mensagem: (v) => (v.trim().length < 10 ? 'Escreva uma mensagem (mínimo 10 caracteres).' : ''),
+  type Validators = { [K in FieldName]: (value: string) => string };
+
+  const validators: Validators = {
+    nome: (v: string) => (v.trim().length < 3 ? 'Informe um nome válido (mínimo 3 caracteres).' : ''),
+    email: (v: string) => (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? 'Informe um e-mail válido.' : ''),
+    telefone: (v: string) => (v && v.replace(/\D/g, '').length < 10 ? 'Telefone inválido (quando informado).' : ''),
+    cidade: (v: string) => (v.trim().length < 2 ? 'Informe sua cidade.' : ''),
+    assunto: (v: string) => (v.trim().length < 3 ? 'Informe o assunto.' : ''),
+    mensagem: (v: string) => (v.trim().length < 10 ? 'Escreva uma mensagem (mínimo 10 caracteres).' : ''),
   };
 
   function setError(name: FieldName, message: string) {
-    const el = form.querySelector<HTMLElement>(`[data-error="${name}"]`);
+    const el = form.querySelector(`[data-error="${name}"]`) as HTMLElement | null;
     const input = form.elements.namedItem(name) as HTMLElement | null;
     if (el) {
       el.textContent = message;
@@ -232,18 +240,20 @@ const { author, contact } = siteConfig;
 
   const fieldNames: FieldName[] = ['nome', 'email', 'telefone', 'cidade', 'assunto', 'mensagem'];
 
-  fieldNames.forEach((n) => {
+  fieldNames.forEach((n: FieldName) => {
     const input = form.elements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement | null;
     input?.addEventListener('input', () => setError(n, validators[n](input.value)));
   });
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async (e: Event) => {
     e.preventDefault();
     showFeedback(null);
 
-    const data = Object.fromEntries(new FormData(form));
+    const fd = new FormData(form);
+    const data: { [k: string]: FormDataEntryValue } = {} as { [k: string]: FormDataEntryValue };
+    fd.forEach((val, key) => { data[key] = val; });
     let hasError = false;
-    fieldNames.forEach((n) => {
+    fieldNames.forEach((n: FieldName) => {
       const val = String(data[n] ?? '');
       const msg = validators[n](val);
       setError(n, msg);
@@ -259,7 +269,7 @@ const { author, contact } = siteConfig;
 
     // TODO: integrar API aqui (ex: fetch('/api/contato', {...}))
     // Pronto para Formspree/Resend custom.
-    await new Promise((r) => setTimeout(r, 900));
+    await new Promise<void>((resolve: (val?: void) => void) => setTimeout(() => resolve(), 900));
 
     setBtnLoading(false);
     showFeedback('success');

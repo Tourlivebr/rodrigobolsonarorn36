@@ -96,8 +96,8 @@ const jsonLdWebSite = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdPerson)} />
-    <script type="application/ld+json" set:html={JSON.stringify(jsonLdWebSite)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdPerson)} />
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLdWebSite)} />
   </head>
   <body class="min-h-screen flex flex-col">
     <main class="flex-1">

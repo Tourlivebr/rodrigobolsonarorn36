@@ -3,9 +3,14 @@ import { siteConfig } from '@data/site';
 
 const { author } = siteConfig;
 
-const aboutItems = [
+interface AboutItem {
+  label: string;
+  value: string;
+}
+
+const aboutItems: AboutItem[] = [
   { label: 'Ocupação', value: author.ocupacao },
-  { label: 'Naturalidade', value: `${author.cidade}/${author.estado.split(' ').pop()}` },
+  { label: 'Naturalidade', value: `${author.cidade}/${(author.estado as string).split(' ').pop() ?? 'RN'}` },
   { label: 'Idade', value: `${author.idade} anos` },
   { label: 'Fé', value: author.religiao },
   { label: 'Orientação', value: author.orientacao },
