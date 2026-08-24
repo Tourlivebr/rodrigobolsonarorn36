@@ -1,0 +1,78 @@
+---
+import { author } from '@data/site';
+---
+
+<section id="inicio" class="relative w-full overflow-hidden">
+  <div class="relative w-full bg-slate-100">
+    <div class="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[22/9] lg:aspect-[24/9]">
+      <img
+        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=2400&q=85"
+        alt="Paisagem do Rio Grande do Norte com céu claro, natureza e potencial de desenvolvimento."
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+        class="absolute inset-0 w-full h-full object-cover"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-blue-950/45 to-rn-green/20" />
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.3)_100%)]" />
+
+      <div class="absolute inset-0 flex items-end">
+        <div class="container-wide px-4 pb-10 sm:pb-14 md:pb-20 lg:pb-24 max-w-7xl mx-auto text-white">
+          <div class="max-w-4xl">
+            <span class="inline-flex items-center gap-2 rounded-full border border-white/25 bg-rn-green/85 backdrop-blur-md px-4 py-1.5 text-xs sm:text-sm font-semibold text-white shadow-sm ring-1 ring-black/5 mb-4 md:mb-6">
+              <span class="inline-block w-2 h-2 rounded-full bg-rn-yellow animate-pulse" />
+              Portal Informativo — Eleições 2026
+            </span>
+
+            <h1 class="text-balance font-display font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-white drop-shadow-[0_2px_24px_rgba(0,0,0,0.6)] mb-3">
+              Rodrigo Bolsonaro
+            </h1>
+            <p class="text-pretty text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-rn-yellow drop-shadow-[0_2px_18px_rgba(0,0,0,0.6)]">
+              Pré-candidato ao Governo do Rio Grande do Norte
+            </p>
+            <p class="text-pretty text-sm sm:text-base md:text-lg text-white/95 max-w-2xl leading-relaxed drop-shadow-[0_1px_14px_rgba(0,0,0,0.7)]">
+              {author.description}
+            </p>
+
+            <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+              <a
+                href="#propostas"
+                class="inline-flex items-center gap-2 rounded-full bg-rn-yellow text-slate-900 font-bold px-6 py-3 shadow-lg ring-1 ring-black/5 hover:bg-yellow-300 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+              >
+                Ver propostas
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-4 h-4 sm:w-5 sm:h-5" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25" />
+                </svg>
+              </a>
+              <a
+                href="#sobre"
+                class="inline-flex items-center gap-2 rounded-full border border-white/30 bg-white/10 backdrop-blur-md text-white font-semibold px-6 py-3 shadow-sm hover:bg-white/20 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200"
+              >
+                Conhecer o perfil
+              </a>
+            </div>
+
+            <div class="mt-8 sm:mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
+              <div class="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-4 py-3 shadow-sm">
+                <p class="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-semibold">4 áreas</p>
+                <p class="text-lg sm:text-xl font-extrabold text-white leading-tight mt-1">Plano de governo</p>
+              </div>
+              <div class="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-4 py-3 shadow-sm">
+                <p class="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-semibold">+60 itens</p>
+                <p class="text-lg sm:text-xl font-extrabold text-white leading-tight mt-1">Propostas</p>
+              </div>
+              <div class="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-4 py-3 shadow-sm">
+                <p class="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-semibold">6 polos</p>
+                <p class="text-lg sm:text-xl font-extrabold text-white leading-tight mt-1">Centros industriais</p>
+              </div>
+              <div class="rounded-2xl border border-white/20 bg-white/10 backdrop-blur-md px-4 py-3 shadow-sm">
+                <p class="text-[11px] sm:text-xs uppercase tracking-wider text-white/70 font-semibold">Regionalizado</p>
+                <p class="text-lg sm:text-xl font-extrabold text-white leading-tight mt-1">Por todo o RN</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
