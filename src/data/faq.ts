@@ -7,7 +7,7 @@ export const faqItems: FAQItem[] = [
   {
     pergunta: 'Quem é Rodrigo Bolsonaro?',
     resposta:
-      'Rodrigo Bolsonaro é empresário natalense, 46 anos, cristão. Identificado politicamente com a direita e o bolsonarismo. É candidato ao Governo do Rio Grande do Norte nas eleições de 2026, ligado ao AGIR. Seus valores são: Deus, Família e Rio Grande do Norte.',
+      'Rodrigo Bolsonaro é empresário natalense, 46 anos, cristão. Identificado politicamente com a direita e bolsonarista. É candidato ao Governo do Rio Grande do Norte nas eleições de 2026, ligado ao AGIR. Seus valores são: Deus, Família e Rio Grande do Norte.',
   },
   {
     pergunta: 'Quais são as principais áreas do plano apresentado?',
