@@ -12,14 +12,6 @@ export interface HeroSlide {
 
 export const heroSlides: HeroSlide[] = [
   {
-    id: 1,
-    imagem: '/img/banner_rodrigobolsonaro36.png',
-    imagemAlt: 'Banner institucional Rodrigo Bolsonaro 36',
-    tema: 'banner',
-    exibirTexto: false,
-    usarContain: true,
-  },
-  {
     id: 2,
     titulo: 'Saúde Pública',
     subtitulo: 'Hospitais 24 horas',
