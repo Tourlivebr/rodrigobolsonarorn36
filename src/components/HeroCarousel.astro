@@ -131,9 +131,11 @@ import { heroSlides } from '@data/hero';
 </section>
 
 <script>
-  const total = { heroSlides }.heroSlides?.length ?? (document.querySelectorAll('[data-dot]').length);
-  const slidesCount = total as number;
-  const track = document.getElementById('hero-track');
+  /// <reference lib="dom" />
+  /// <reference lib="es2015" />
+  import { heroSlides as _heroSlides } from '@data/hero';
+  const slidesCount: number = _heroSlides.length || document.querySelectorAll('[data-dot]').length;
+  const track = document.getElementById('hero-track') as HTMLElement | null;
   const prevBtn = document.getElementById('hero-prev');
   const nextBtn = document.getElementById('hero-next');
   const dotsParent = document.getElementById('hero-dots');
