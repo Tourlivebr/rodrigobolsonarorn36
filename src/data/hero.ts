@@ -26,8 +26,8 @@ export const heroSlides: HeroSlide[] = [
     descricao:
       'Proposta de Hospitais Metropolitanos 24h e novos laboratórios por regiões-polo.',
     imagem:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Modern%20public%20hospital%20building%20Brazil%20healthcare%20architecture%20clean%20facade%20daylight%20professional%20photography%20clean%20style&image_size=landscape_16_9',
-    imagemAlt: 'Hospital moderno',
+      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=2000&q=80',
+    imagemAlt: 'Hospital moderno com atendimento de emergência e ambulância.',
     tema: 'saude',
     exibirTexto: true,
   },
@@ -38,8 +38,8 @@ export const heroSlides: HeroSlide[] = [
     descricao:
       'Proposta de desenvolvimento industrial em Grande Natal, Mossoró, Caicó e mais.',
     imagem:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Modern%20industrial%20park%20Brazil%20infrastructure%20aerial%20view%20clean%20modern%20factories%20professional%20photography&image_size=landscape_16_9',
-    imagemAlt: 'Centro Industrial',
+      'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=2000&q=80',
+    imagemAlt: 'Vista aérea de rodovia, parque eólico e zona industrial em expansão.',
     tema: 'infra',
     exibirTexto: true,
   },
@@ -50,8 +50,8 @@ export const heroSlides: HeroSlide[] = [
     descricao:
       'Proposta de valorização das forças de segurança e novas viaturas.',
     imagem:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Brazilian%20public%20security%20forces%20professional%20uniform%20clean%20style%20ceremony%20daylight%20photography&image_size=landscape_16_9',
-    imagemAlt: 'Forças de Segurança',
+      'https://images.unsplash.com/photo-1517816428104-797678c7cf0c?auto=format&fit=crop&w=2000&q=80',
+    imagemAlt: 'Equipe de forças de segurança com viaturas em patrulhamento urbano.',
     tema: 'seguranca',
     exibirTexto: true,
   },
@@ -62,8 +62,8 @@ export const heroSlides: HeroSlide[] = [
     descricao:
       'Proposta de escolas modernas, valorização docente e programa +Saúde RN.',
     imagem:
-      'https://coresg-normal.trae.ai/api/ide/v1/text_to_image?prompt=Modern%20school%20building%20Brazil%20education%20facade%20children%20clean%20architecture%20professional%20photography&image_size=landscape_16_9',
-    imagemAlt: 'Escola moderna',
+      'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=2000&q=80',
+    imagemAlt: 'Escola moderna com estudantes, biblioteca e espaço esportivo.',
     tema: 'educacao',
     exibirTexto: true,
   },

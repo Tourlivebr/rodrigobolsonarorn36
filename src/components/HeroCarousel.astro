@@ -1,5 +1,32 @@
 ---
 import { heroSlides } from '@data/hero';
+
+const temaOverlay: Record<string, string> = {
+  banner: 'bg-gradient-to-t from-white/60 via-white/20 to-transparent',
+  saude: 'bg-gradient-to-t from-emerald-950/85 via-emerald-950/45 to-sky-900/20',
+  infra: 'bg-gradient-to-t from-slate-950/80 via-blue-950/45 to-amber-900/15',
+  seguranca: 'bg-gradient-to-t from-slate-950/85 via-blue-950/50 to-slate-900/20',
+  educacao: 'bg-gradient-to-t from-green-950/80 via-emerald-950/40 to-yellow-900/15',
+  institucional: 'bg-gradient-to-t from-slate-900/80 via-slate-800/40 to-transparent',
+};
+
+const temaBadge: Record<string, string> = {
+  banner: 'bg-white/15 border-white/20 text-white',
+  saude: 'bg-emerald-500/85 border-emerald-300/40 text-white',
+  infra: 'bg-rn-blue/85 border-blue-300/40 text-white',
+  seguranca: 'bg-blue-700/85 border-blue-400/40 text-white',
+  educacao: 'bg-rn-green/85 border-emerald-300/40 text-white',
+  institucional: 'bg-white/15 border-white/20 text-white',
+};
+
+const temaSub: Record<string, string> = {
+  banner: 'text-white',
+  saude: 'text-emerald-100',
+  infra: 'text-amber-200',
+  seguranca: 'text-rn-yellow',
+  educacao: 'text-yellow-200',
+  institucional: 'text-white',
+};
 ---
 
 <section id="inicio" class="relative w-full overflow-hidden">
@@ -24,12 +51,13 @@ import { heroSlides } from '@data/hero';
               aria-label={slide.titulo ?? slide.imagemAlt}
             >
               <article class="relative">
-                <div class="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[21/9] bg-white">
+                <div class="relative w-full aspect-[16/9] sm:aspect-[21/9] md:aspect-[22/9] lg:aspect-[24/9] bg-slate-100">
                   <img
                     src={slide.imagem}
                     alt={slide.imagemAlt}
                     loading={i === 0 ? 'eager' : 'lazy'}
                     decoding="async"
+                    fetchpriority={i === 0 ? 'high' : 'auto'}
                     class={`absolute inset-0 w-full h-full ${
                       slide.usarContain ? 'object-contain' : 'object-cover'
                     }`}
@@ -37,22 +65,23 @@ import { heroSlides } from '@data/hero';
                   {
                     slide.exibirTexto && (
                       <>
-                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
+                        <div class={`absolute inset-0 ${temaOverlay[slide.tema || 'institucional'] || temaOverlay.institucional}`} />
+                        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_transparent_0%,_rgba(0,0,0,0.25)_100%)]" />
                         <div class="absolute inset-0 flex items-end">
-                          <div class="container-wide px-4 pb-8 sm:pb-12 md:pb-16 lg:pb-20 max-w-7xl text-white">
+                          <div class="container-wide px-4 pb-10 sm:pb-14 md:pb-20 lg:pb-24 max-w-7xl text-white">
                             <div class="max-w-3xl">
-                              <span class="tag-label bg-white/15 text-white border border-white/20 backdrop-blur-sm mb-4">
-                                {slide.tema === 'institucional'
+                              <span class={`tag-label backdrop-blur-md border mb-4 md:mb-5 ${temaBadge[slide.tema || 'institucional'] || temaBadge.institucional}`}>
+                                {slide.tema === 'institucional' || slide.tema === 'banner'
                                   ? 'Institucional'
                                   : 'Proposta apresentada'}
                               </span>
-                              <h1 class="text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-white mb-3">
+                              <h1 class="text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-white mb-3 drop-shadow-[0_2px_18px_rgba(0,0,0,0.55)]">
                                 {slide.titulo}
                               </h1>
-                              <p class="text-lg md:text-xl font-semibold text-rn-yellow mb-2">
+                              <p class={`text-base sm:text-lg md:text-xl font-bold mb-2 md:mb-3 drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)] ${temaSub[slide.tema || 'institucional'] || temaSub.institucional}`}>
                                 {slide.subtitulo}
                               </p>
-                              <p class="text-pretty text-base md:text-lg text-white/90 max-w-2xl">
+                              <p class="text-pretty text-sm sm:text-base md:text-lg text-white/95 max-w-2xl leading-relaxed drop-shadow-[0_1px_10px_rgba(0,0,0,0.65)]">
                                 {slide.descricao}
                               </p>
                             </div>
@@ -72,9 +101,9 @@ import { heroSlides } from '@data/hero';
         id="hero-prev"
         type="button"
         aria-label="Slide anterior"
-        class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 text-slate-800 shadow-md hover:bg-white transition-colors flex items-center justify-center"
+        class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/90 text-slate-800 shadow-md ring-1 ring-slate-900/5 hover:bg-white hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
         </svg>
       </button>
@@ -83,9 +112,9 @@ import { heroSlides } from '@data/hero';
         id="hero-next"
         type="button"
         aria-label="Próximo slide"
-        class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 text-slate-800 shadow-md hover:bg-white transition-colors flex items-center justify-center"
+        class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-white/90 text-slate-800 shadow-md ring-1 ring-slate-900/5 hover:bg-white hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
         </svg>
       </button>
@@ -104,8 +133,10 @@ import { heroSlides } from '@data/hero';
               aria-selected={i === 0 ? 'true' : 'false'}
               aria-label={`Ir para slide ${i + 1}`}
               data-dot={i}
-              class={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
-                i === 0 ? 'bg-white w-8 sm:w-10 rounded-full' : 'bg-white/50 hover:bg-white/80'
+              class={`h-2.5 sm:h-3 rounded-full transition-all duration-300 shadow-sm ${
+                i === 0
+                  ? 'bg-white w-9 sm:w-12 ring-1 ring-slate-900/10'
+                  : 'bg-white/55 hover:bg-white/85 w-2.5 sm:w-3'
               }`}
             />
           ))
@@ -117,7 +148,7 @@ import { heroSlides } from '@data/hero';
         type="button"
         aria-label="Pausar autoplay"
         aria-pressed="false"
-        class="hidden sm:flex absolute bottom-4 right-4 z-10 w-9 h-9 items-center justify-center rounded-full bg-white/90 text-slate-800 shadow hover:bg-white"
+        class="hidden sm:flex absolute bottom-4 right-4 z-10 w-10 h-10 items-center justify-center rounded-full bg-white/92 text-slate-800 shadow ring-1 ring-slate-900/5 hover:bg-white hover:scale-105 active:scale-95 transition-all"
       >
         <svg id="hero-pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
           <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clip-rule="evenodd" />
@@ -136,109 +167,94 @@ import { heroSlides } from '@data/hero';
   import { heroSlides as _heroSlides } from '@data/hero';
   const slidesCount: number = _heroSlides.length || document.querySelectorAll('[data-dot]').length;
   const track = document.getElementById('hero-track') as HTMLElement | null;
-  const prevBtn = document.getElementById('hero-prev');
-  const nextBtn = document.getElementById('hero-next');
-  const dotsParent = document.getElementById('hero-dots');
-  const dots = dotsParent ? Array.from(dotsParent.querySelectorAll<HTMLButtonElement>('[data-dot]')) : [];
-  const playPauseBtn = document.getElementById('hero-playpause');
-  const pauseIcon = document.getElementById('hero-pause-icon');
-  const playIcon = document.getElementById('hero-play-icon');
+  const prevBtn = document.getElementById('hero-prev') as HTMLButtonElement | null;
+  const nextBtn = document.getElementById('hero-next') as HTMLButtonElement | null;
+  const dotsWrap = document.getElementById('hero-dots') as HTMLElement | null;
+  const pp = document.getElementById('hero-playpause') as HTMLButtonElement | null;
+  const pauseIcon = document.getElementById('hero-pause-icon') as HTMLElement | null;
+  const playIcon = document.getElementById('hero-play-icon') as HTMLElement | null;
 
-  let current = 0;
-  let autoplayTimer: number | undefined;
-  const AUTOPLAY_MS = 6000;
-  let paused = false;
+  if (track) {
+    let current = 0;
+    const total = slidesCount;
 
-  function update(animate = true) {
-    if (!track) return;
-    if (!animate) track.style.transition = 'none';
-    track.style.transform = `translateX(-${current * 100}%)`;
-    if (!animate) {
-      void track.offsetWidth;
-      track.style.transition = '';
-    }
-    dots.forEach((d, i) => {
-      const active = i === current;
-      d.setAttribute('aria-selected', String(active));
-      d.classList.toggle('bg-white', active);
-      d.classList.toggle('w-8', active);
-      d.classList.toggle('sm:w-10', active);
-      d.classList.toggle('rounded-full', active);
-      d.classList.toggle('bg-white/50', !active);
+    const setIndex = (i: number) => {
+      const n: number = (i + total) % total;
+      current = n;
+      track.style.transform = `translateX(-${n * 100}%)`;
+
+      const dots = dotsWrap?.querySelectorAll<HTMLButtonElement>('[data-dot]');
+      dots?.forEach((d, idx) => {
+        const active = idx === n;
+        d.setAttribute('aria-selected', String(active));
+        d.classList.toggle('bg-white', active);
+        d.classList.toggle('ring-1', active);
+        d.classList.toggle('ring-slate-900/10', active);
+        d.classList.toggle('w-9', active);
+        d.classList.toggle('sm:w-12', active);
+        d.classList.toggle('w-2.5', !active);
+        d.classList.toggle('sm:w-3', !active);
+        d.classList.toggle('bg-white/55', !active);
+      });
+    };
+
+    const go = (d: number) => setIndex(current + d);
+
+    prevBtn?.addEventListener('click', () => { go(-1); resetAutoplay(); });
+    nextBtn?.addEventListener('click', () => { go(1); resetAutoplay(); });
+
+    dotsWrap?.querySelectorAll<HTMLButtonElement>('[data-dot]').forEach((d) => {
+      d.addEventListener('click', () => {
+        const i = Number(d.getAttribute('data-dot') || '0');
+        setIndex(i);
+        resetAutoplay();
+      });
     });
-  }
 
-  function next() {
-    current = (current + 1) % slidesCount;
-    update();
-  }
-  function prev() {
-    current = (current - 1 + slidesCount) % slidesCount;
-    update();
-  }
-  function goTo(i: number) {
-    current = i;
-    update();
-    resetAutoplay();
-  }
+    // Autoplay
+    let autoplay = true;
+    let id: ReturnType<typeof setInterval> | null = null;
 
-  function startAutoplay() {
-    stopAutoplay();
-    if (paused) return;
-    autoplayTimer = window.setInterval(next, AUTOPLAY_MS);
-  }
-  function stopAutoplay() {
-    if (autoplayTimer) {
-      window.clearInterval(autoplayTimer);
-      autoplayTimer = undefined;
-    }
-  }
-  function resetAutoplay() {
-    if (!paused) startAutoplay();
-  }
+    const stopAutoplay = () => {
+      if (id) { clearInterval(id); id = null; }
+    };
+    const startAutoplay = () => {
+      stopAutoplay();
+      if (autoplay) {
+        id = setInterval(() => go(1), 6500);
+      }
+    };
+    const resetAutoplay = () => startAutoplay();
 
-  function setPaused(state: boolean) {
-    paused = state;
-    playPauseBtn?.setAttribute('aria-pressed', String(state));
-    playPauseBtn?.setAttribute('aria-label', state ? 'Retomar autoplay' : 'Pausar autoplay');
-    pauseIcon?.classList.toggle('hidden', state);
-    playIcon?.classList.toggle('hidden', !state);
-    if (state) stopAutoplay();
-    else startAutoplay();
-  }
-
-  prevBtn?.addEventListener('click', () => { prev(); resetAutoplay(); });
-  nextBtn?.addEventListener('click', () => { next(); resetAutoplay(); });
-  dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.dot))));
-  playPauseBtn?.addEventListener('click', () => setPaused(!paused));
-
-  const carousel = document.getElementById('hero-carousel');
-  carousel?.addEventListener('mouseenter', stopAutoplay);
-  carousel?.addEventListener('mouseleave', () => { if (!paused) startAutoplay(); });
-  carousel?.addEventListener('focusin', stopAutoplay);
-  carousel?.addEventListener('focusout', () => { if (!paused) startAutoplay(); });
-
-  if (carousel) {
-    let touchStart = 0;
-    let touchEnd = 0;
-    carousel.addEventListener('touchstart', (e) => { stopAutoplay(); touchStart = touchEnd = e.changedTouches[0].clientX; }, { passive: true });
-    carousel.addEventListener('touchmove', (e) => { touchEnd = e.changedTouches[0].clientX; }, { passive: true });
-    carousel.addEventListener('touchend', () => {
-      const dx = touchEnd - touchStart;
-      if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); }
-      resetAutoplay();
+    pp?.addEventListener('click', () => {
+      autoplay = !autoplay;
+      pp.setAttribute('aria-pressed', String(!autoplay));
+      pp.setAttribute('aria-label', autoplay ? 'Pausar autoplay' : 'Retomar autoplay');
+      pauseIcon?.classList.toggle('hidden', !autoplay);
+      playIcon?.classList.toggle('hidden', autoplay);
+      if (autoplay) startAutoplay(); else stopAutoplay();
     });
+
+    // Pausa em hover / focus / tab
+    const root = document.getElementById('hero-carousel');
+    root?.addEventListener('mouseenter', stopAutoplay);
+    root?.addEventListener('mouseleave', startAutoplay);
+    root?.addEventListener('focusin', stopAutoplay);
+    root?.addEventListener('focusout', startAutoplay);
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) stopAutoplay(); else startAutoplay();
+    });
+
+    // Touch / swipe
+    let sx = 0;
+    let dx = 0;
+    track?.addEventListener('touchstart', (e: TouchEvent) => { sx = e.touches[0].clientX; dx = 0; stopAutoplay(); }, { passive: true });
+    track?.addEventListener('touchmove', (e: TouchEvent) => { dx = e.touches[0].clientX - sx; }, { passive: true });
+    track?.addEventListener('touchend', () => {
+      if (Math.abs(dx) > 40) { go(dx < 0 ? 1 : -1); }
+      startAutoplay();
+    });
+
+    startAutoplay();
   }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowLeft' && document.activeElement?.closest('[id="hero-carousel"]')) { prev(); resetAutoplay(); }
-    if (e.key === 'ArrowRight' && document.activeElement?.closest('[id="hero-carousel"]')) { next(); resetAutoplay(); }
-  });
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) stopAutoplay();
-    else if (!paused) startAutoplay();
-  });
-
-  startAutoplay();
 </script>
