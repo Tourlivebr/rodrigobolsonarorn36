@@ -186,19 +186,20 @@ const { author, contact } = siteConfig;
 <script>
   type FieldName = 'nome' | 'email' | 'telefone' | 'cidade' | 'assunto' | 'mensagem';
 
-  const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  if (!form) throw new Error('form not found');
+  const formEl = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (!formEl) throw new Error('form not found');
+  const form: HTMLFormElement = formEl;
 
   const label = form.querySelector<HTMLElement>('[data-label]');
-  const loading = form.querySelector<HTMLElement>('[data-loading]');
+  const loadingEl = form.querySelector<HTMLElement>('[data-loading]');
   const successEl = form.querySelector<HTMLElement>('[data-feedback="success"]');
   const errorEl = form.querySelector<HTMLElement>('[data-feedback="error"]');
 
   const setBtnLoading = (loading_: boolean) => {
-    if (!label || !loading) return;
+    if (!label || !loadingEl) return;
     label.classList.toggle('hidden', loading_);
-    loading.classList.toggle('hidden', !loading_);
-    loading.classList.toggle('inline-flex', loading_);
+    loadingEl.classList.toggle('hidden', !loading_);
+    loadingEl.classList.toggle('inline-flex', loading_);
   };
 
   const showFeedback = (type: 'success' | 'error' | null) => {
