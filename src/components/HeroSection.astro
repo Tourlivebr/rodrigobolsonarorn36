@@ -1,5 +1,7 @@
 ---
-import { author } from '@data/site';
+import { siteConfig } from '@data/site';
+const author = siteConfig.author;
+const slogan = siteConfig.description;
 ---
 
 <section id="inicio" class="relative w-full overflow-hidden">
@@ -31,7 +33,7 @@ import { author } from '@data/site';
               Pré-candidato ao Governo do Rio Grande do Norte
             </p>
             <p class="text-pretty text-sm sm:text-base md:text-lg text-white/95 max-w-2xl leading-relaxed drop-shadow-[0_1px_14px_rgba(0,0,0,0.7)]">
-              {author.description}
+              {slogan}
             </p>
 
             <div class="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
