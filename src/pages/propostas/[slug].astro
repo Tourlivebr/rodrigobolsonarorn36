@@ -51,7 +51,7 @@ const bannerBg: Record<string, string> = {
           <div class="md:col-span-2 aspect-[16/10] md:aspect-auto overflow-hidden">
             <img
               src={proposal.imagem}
-              alt={`Ilustração — ${proposal.titulo}`}
+              alt={proposal.imagemAlt ?? `Ilustração — ${proposal.titulo}`}
               class="w-full h-full object-cover"
               loading="eager"
               decoding="async"

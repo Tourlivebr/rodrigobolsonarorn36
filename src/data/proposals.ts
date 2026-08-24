@@ -4,12 +4,11 @@ export interface Proposal {
   titulo: string;
   descricao: string;
   imagem: string;
+  imagemAlt: string;
   resumo: string;
   itens: string[];
   cor: string;
 }
-
-const T2I = 'https://coresg-normal.trae.ai/api/ide/v1/text_to_image';
 
 export const proposals: Proposal[] = [
   {
@@ -17,7 +16,9 @@ export const proposals: Proposal[] = [
     categoria: 'Saúde Pública',
     titulo: 'Saúde Pública',
     descricao: 'Propostas apresentadas para a Saúde Pública do Rio Grande do Norte.',
-    imagem: `${T2I}?prompt=Modern%20editorial%20flat%20illustration%20of%20public%20healthcare%20Brazil%20stethoscope%20hospital%20clinic%20medical%20cross%20green%20blue%20clean%20white%20background%20vector%20professional&image_size=square_hd`,
+    imagem:
+      'https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&w=1600&q=80',
+    imagemAlt: 'Hospital com alas modernas, profissionais de saúde atendendo ao público.',
     resumo:
       'Ampliação e fortalecimento da rede de saúde pública com novos equipamentos, laboratórios, hospitais 24h e valorização dos profissionais.',
     cor: 'from-rose-50',
@@ -42,7 +43,10 @@ export const proposals: Proposal[] = [
     descricao:
       'Propostas apresentadas para o desenvolvimento econômico e infraestrutura do RN.',
     icone: 'industry',
-    imagem: `${T2I}?prompt=Modern%20editorial%20flat%20illustration%20of%20brazilian%20economic%20infrastructure%20bridges%20roads%20wind%20turbines%20solar%20panels%20factories%20ports%20railways%20blue%20yellow%20clean%20white%20background%20vector%20professional&image_size=square_hd`,
+    imagem:
+      'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1600&q=80',
+    imagemAlt:
+      'Estrada moderna com viaduto, parque de energias renováveis e indústria ao fundo.',
     resumo:
       'Reativação de aeroportos, 6 Centros Industriais Avançados, energias renováveis, rodovias, ferrovias, porto marítimo e desenvolvimento industrial.',
     cor: 'from-blue-50',
@@ -73,7 +77,10 @@ export const proposals: Proposal[] = [
     titulo: 'Segurança Pública',
     descricao: 'Propostas apresentadas para a Segurança Pública do Rio Grande do Norte.',
     icone: 'shield',
-    imagem: `${T2I}?prompt=Modern%20editorial%20flat%20illustration%20of%20public%20safety%20security%20brazil%20police%20shield%20badge%20firefighters%20patrol%20blue%20yellow%20green%20clean%20white%20background%20vector%20professional&image_size=square_hd`,
+    imagem:
+      'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80',
+    imagemAlt:
+      'Viatura de polícia e profissionais das forças de segurança em operação urbana.',
     resumo:
       'Duas penitenciárias de segurança máxima, ampliação do efetivo das forças de segurança, novas viaturas, modernização de equipamentos e hospitais.',
     cor: 'from-amber-50',
@@ -100,7 +107,10 @@ export const proposals: Proposal[] = [
     descricao:
       'Propostas apresentadas para Educação, Ação Social e Esporte no Rio Grande do Norte.',
     icone: 'book',
-    imagem: `${T2I}?prompt=Modern%20editorial%20flat%20illustration%20of%20education%20social%20action%20sports%20brazil%20school%20books%20soccer%20children%20graduation%20cap%20green%20yellow%20blue%20clean%20white%20background%20vector%20professional&image_size=square_hd`,
+    imagem:
+      'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80',
+    imagemAlt:
+      'Estudantes em sala de aula com biblioteca e campo de futebol, educação e esporte.',
     resumo:
       'Construção e reforma de escolas, escolas militares, valorização de professores, programa +Saúde RN Creches 24h e incentivo ao esporte.',
     cor: 'from-emerald-50',
