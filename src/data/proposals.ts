@@ -42,7 +42,6 @@ export const proposals: Proposal[] = [
     titulo: 'Desenvolvimento Econômico e Infraestrutura',
     descricao:
       'Propostas apresentadas para o desenvolvimento econômico e infraestrutura do RN.',
-    icone: 'industry',
     imagem:
       'https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1600&q=80',
     imagemAlt:
@@ -76,7 +75,6 @@ export const proposals: Proposal[] = [
     categoria: 'Segurança Pública',
     titulo: 'Segurança Pública',
     descricao: 'Propostas apresentadas para a Segurança Pública do Rio Grande do Norte.',
-    icone: 'shield',
     imagem:
       'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80',
     imagemAlt:
@@ -106,7 +104,6 @@ export const proposals: Proposal[] = [
     titulo: 'Educação, Ação Social e Esporte',
     descricao:
       'Propostas apresentadas para Educação, Ação Social e Esporte no Rio Grande do Norte.',
-    icone: 'book',
     imagem:
       'https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1600&q=80',
     imagemAlt:
