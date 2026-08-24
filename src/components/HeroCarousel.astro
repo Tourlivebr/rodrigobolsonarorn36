@@ -1,0 +1,242 @@
+---
+import { heroSlides } from '@data/hero';
+---
+
+<section id="inicio" class="relative w-full overflow-hidden">
+  <div class="relative">
+    <div
+      id="hero-carousel"
+      class="relative w-full"
+      aria-roledescription="carrossel"
+      aria-label="Destaques institucionais"
+    >
+      <ul
+        id="hero-track"
+        class="flex w-full transition-transform duration-700 ease-out"
+      >
+        {
+          heroSlides.map((slide, i) => (
+            <li
+              class="shrink-0 w-full"
+              style={`width: 100%;`}
+              role="group"
+              aria-roledescription={`slide ${i + 1} de ${heroSlides.length}`}
+              aria-label={slide.titulo ?? slide.imagemAlt}
+            >
+              <article class="relative">
+                <div class="relative w-full aspect-[16/9] sm:aspect-[16/8] md:aspect-[16/7] lg:aspect-[21/9] bg-white">
+                  <img
+                    src={slide.imagem}
+                    alt={slide.imagemAlt}
+                    loading={i === 0 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    class={`absolute inset-0 w-full h-full ${
+                      slide.usarContain ? 'object-contain' : 'object-cover'
+                    }`}
+                  />
+                  {
+                    slide.exibirTexto && (
+                      <>
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/30 to-transparent" />
+                        <div class="absolute inset-0 flex items-end">
+                          <div class="container-wide px-4 pb-8 sm:pb-12 md:pb-16 lg:pb-20 max-w-7xl text-white">
+                            <div class="max-w-3xl">
+                              <span class="tag-label bg-white/15 text-white border border-white/20 backdrop-blur-sm mb-4">
+                                {slide.tema === 'institucional'
+                                  ? 'Institucional'
+                                  : 'Proposta apresentada'}
+                              </span>
+                              <h1 class="text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-display text-white mb-3">
+                                {slide.titulo}
+                              </h1>
+                              <p class="text-lg md:text-xl font-semibold text-rn-yellow mb-2">
+                                {slide.subtitulo}
+                              </p>
+                              <p class="text-pretty text-base md:text-lg text-white/90 max-w-2xl">
+                                {slide.descricao}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </>
+                    )
+                  }
+                </div>
+              </article>
+            </li>
+          ))
+        }
+      </ul>
+
+      <button
+        id="hero-prev"
+        type="button"
+        aria-label="Slide anterior"
+        class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 text-slate-800 shadow-md hover:bg-white transition-colors flex items-center justify-center"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </button>
+
+      <button
+        id="hero-next"
+        type="button"
+        aria-label="Próximo slide"
+        class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/90 text-slate-800 shadow-md hover:bg-white transition-colors flex items-center justify-center"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" class="w-5 h-5 sm:w-6 sm:h-6" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+        </svg>
+      </button>
+
+      <div
+        id="hero-dots"
+        role="tablist"
+        aria-label="Indicadores de slide"
+        class="absolute left-1/2 -translate-x-1/2 bottom-4 sm:bottom-6 z-10 flex items-center gap-2"
+      >
+        {
+          heroSlides.map((_, i) => (
+            <button
+              type="button"
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+              aria-label={`Ir para slide ${i + 1}`}
+              data-dot={i}
+              class={`w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                i === 0 ? 'bg-white w-8 sm:w-10 rounded-full' : 'bg-white/50 hover:bg-white/80'
+              }`}
+            />
+          ))
+        }
+      </div>
+
+      <button
+        id="hero-playpause"
+        type="button"
+        aria-label="Pausar autoplay"
+        aria-pressed="false"
+        class="hidden sm:flex absolute bottom-4 right-4 z-10 w-9 h-9 items-center justify-center rounded-full bg-white/90 text-slate-800 shadow hover:bg-white"
+      >
+        <svg id="hero-pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4" aria-hidden="true">
+          <path fill-rule="evenodd" d="M6.75 5.25a.75.75 0 0 1 .75-.75H9a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H7.5a.75.75 0 0 1-.75-.75V5.25Zm7.5 0A.75.75 0 0 1 15 4.5h1.5a.75.75 0 0 1 .75.75v13.5a.75.75 0 0 1-.75.75H15a.75.75 0 0 1-.75-.75V5.25Z" clip-rule="evenodd" />
+        </svg>
+        <svg id="hero-play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 hidden" aria-hidden="true">
+          <path fill-rule="evenodd" d="M4.5 5.653c0-1.427 1.529-2.33 2.779-1.643l11.54 6.347c1.295.712 1.295 2.573 0 3.286L7.28 19.99c-1.25.687-2.779-.217-2.779-1.643V5.653Z" clip-rule="evenodd" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const total = { heroSlides }.heroSlides?.length ?? (document.querySelectorAll('[data-dot]').length);
+  const slidesCount = total as number;
+  const track = document.getElementById('hero-track');
+  const prevBtn = document.getElementById('hero-prev');
+  const nextBtn = document.getElementById('hero-next');
+  const dotsParent = document.getElementById('hero-dots');
+  const dots = dotsParent ? Array.from(dotsParent.querySelectorAll<HTMLButtonElement>('[data-dot]')) : [];
+  const playPauseBtn = document.getElementById('hero-playpause');
+  const pauseIcon = document.getElementById('hero-pause-icon');
+  const playIcon = document.getElementById('hero-play-icon');
+
+  let current = 0;
+  let autoplayTimer: number | undefined;
+  const AUTOPLAY_MS = 6000;
+  let paused = false;
+
+  function update(animate = true) {
+    if (!track) return;
+    if (!animate) track.style.transition = 'none';
+    track.style.transform = `translateX(-${current * 100}%)`;
+    if (!animate) {
+      void track.offsetWidth;
+      track.style.transition = '';
+    }
+    dots.forEach((d, i) => {
+      const active = i === current;
+      d.setAttribute('aria-selected', String(active));
+      d.classList.toggle('bg-white', active);
+      d.classList.toggle('w-8', active);
+      d.classList.toggle('sm:w-10', active);
+      d.classList.toggle('rounded-full', active);
+      d.classList.toggle('bg-white/50', !active);
+    });
+  }
+
+  function next() {
+    current = (current + 1) % slidesCount;
+    update();
+  }
+  function prev() {
+    current = (current - 1 + slidesCount) % slidesCount;
+    update();
+  }
+  function goTo(i: number) {
+    current = i;
+    update();
+    resetAutoplay();
+  }
+
+  function startAutoplay() {
+    stopAutoplay();
+    if (paused) return;
+    autoplayTimer = window.setInterval(next, AUTOPLAY_MS);
+  }
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      window.clearInterval(autoplayTimer);
+      autoplayTimer = undefined;
+    }
+  }
+  function resetAutoplay() {
+    if (!paused) startAutoplay();
+  }
+
+  function setPaused(state: boolean) {
+    paused = state;
+    playPauseBtn?.setAttribute('aria-pressed', String(state));
+    playPauseBtn?.setAttribute('aria-label', state ? 'Retomar autoplay' : 'Pausar autoplay');
+    pauseIcon?.classList.toggle('hidden', state);
+    playIcon?.classList.toggle('hidden', !state);
+    if (state) stopAutoplay();
+    else startAutoplay();
+  }
+
+  prevBtn?.addEventListener('click', () => { prev(); resetAutoplay(); });
+  nextBtn?.addEventListener('click', () => { next(); resetAutoplay(); });
+  dots.forEach((d) => d.addEventListener('click', () => goTo(Number(d.dataset.dot))));
+  playPauseBtn?.addEventListener('click', () => setPaused(!paused));
+
+  const carousel = document.getElementById('hero-carousel');
+  carousel?.addEventListener('mouseenter', stopAutoplay);
+  carousel?.addEventListener('mouseleave', () => { if (!paused) startAutoplay(); });
+  carousel?.addEventListener('focusin', stopAutoplay);
+  carousel?.addEventListener('focusout', () => { if (!paused) startAutoplay(); });
+
+  if (carousel) {
+    let touchStart = 0;
+    let touchEnd = 0;
+    carousel.addEventListener('touchstart', (e) => { stopAutoplay(); touchStart = touchEnd = e.changedTouches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchmove', (e) => { touchEnd = e.changedTouches[0].clientX; }, { passive: true });
+    carousel.addEventListener('touchend', () => {
+      const dx = touchEnd - touchStart;
+      if (Math.abs(dx) > 50) { if (dx < 0) next(); else prev(); }
+      resetAutoplay();
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' && document.activeElement?.closest('[id="hero-carousel"]')) { prev(); resetAutoplay(); }
+    if (e.key === 'ArrowRight' && document.activeElement?.closest('[id="hero-carousel"]')) { next(); resetAutoplay(); }
+  });
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAutoplay();
+    else if (!paused) startAutoplay();
+  });
+
+  startAutoplay();
+</script>

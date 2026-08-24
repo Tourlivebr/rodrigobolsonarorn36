@@ -1,0 +1,107 @@
+---
+import '@styles/global.css';
+import { siteConfig } from '@data/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  canonical?: string;
+  type?: 'website' | 'article';
+  noIndex?: boolean;
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  image = `${siteConfig.url}/og-image.jpg`,
+  canonical,
+  type = 'website',
+  noIndex = false,
+} = Astro.props;
+
+const fullTitle = title ? `${title} — ${siteConfig.name}` : siteConfig.title;
+const canonicalURL = canonical ? new URL(canonical, Astro.site ?? siteConfig.url).toString() : Astro.url.toString();
+
+const jsonLdPerson = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: siteConfig.author.name,
+  givenName: 'Rodrigo',
+  familyName: 'Bolsonaro',
+  description: siteConfig.description,
+  url: siteConfig.url,
+  image: image,
+  jobTitle: siteConfig.author.candidato,
+  memberOf: {
+    '@type': 'Organization',
+    name: siteConfig.author.partido,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressRegion: 'RN',
+    addressLocality: siteConfig.author.cidade,
+    addressCountry: 'BR',
+  },
+  knowsAbout: siteConfig.description,
+  sameAs: Object.values(siteConfig.social).filter(Boolean),
+};
+
+const jsonLdWebSite = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: siteConfig.title,
+  url: siteConfig.url,
+  description: siteConfig.description,
+  inLanguage: siteConfig.locale,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteConfig.url}/?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#002776" />
+    {noIndex && <meta name="robots" content="noindex, nofollow" />}
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <link rel="icon" type="image/png" href="/img/Logo_Rodrigobolsonaro36.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/img/Logo_Rodrigobolsonaro36.png" />
+
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={siteConfig.locale} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:alt" content={fullTitle} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdPerson)} />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLdWebSite)} />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <main class="flex-1">
+      <slot />
+    </main>
+  </body>
+</html>

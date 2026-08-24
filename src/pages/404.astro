@@ -1,0 +1,18 @@
+---
+import Layout from '@layouts/Layout.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+---
+
+<Layout title="Página não encontrada" noIndex={true}>
+  <Header />
+  <section class="section flex items-center justify-center">
+    <div class="container-wide px-4 text-center max-w-xl">
+      <p class="font-display font-extrabold text-7xl md:text-9xl text-rn-blue/10 mb-4">404</p>
+      <h1 class="text-3xl md:text-4xl font-display font-bold text-slate-900 mb-4">Página não encontrada</h1>
+      <p class="text-slate-600 mb-8">A página que você procura não existe ou foi movida.</p>
+      <a href="/" class="btn-primary">Voltar para o início</a>
+    </div>
+  </section>
+  <Footer />
+</Layout>

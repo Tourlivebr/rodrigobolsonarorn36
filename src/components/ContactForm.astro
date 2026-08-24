@@ -1,0 +1,275 @@
+---
+import { siteConfig } from '@data/site';
+const { author, contact } = siteConfig;
+---
+
+<section id="contato" class="section bg-slate-50/60">
+  <div class="container-wide px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start max-w-6xl mx-auto">
+      <div>
+        <span class="tag-label bg-rn-green/10 text-rn-green mb-4">
+          Contato Institucional
+        </span>
+        <h2 class="section-title text-balance">
+          Fale com {author.name}
+        </h2>
+        <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+          Envie sua mensagem. A estrutura do formulário está preparada para futura integração com serviços de envio (API, Resend, Formspree ou outro).
+        </p>
+
+        <ul class="space-y-4">
+          <li class="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+            <span class="shrink-0 w-11 h-11 rounded-xl bg-rn-blue/10 text-rn-blue flex items-center justify-center" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">E-mail</p>
+              <p class="font-semibold text-slate-900">{contact.email}</p>
+            </div>
+          </li>
+          <li class="flex items-start gap-4 p-4 rounded-xl bg-white border border-slate-100 shadow-sm">
+            <span class="shrink-0 w-11 h-11 rounded-xl bg-rn-green/10 text-rn-green flex items-center justify-center" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+              </svg>
+            </span>
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-wide text-slate-500 mb-1">Localização</p>
+              <p class="font-semibold text-slate-900">{contact.endereco}</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <form id="contact-form" class="card p-6 md:p-8" novalidate>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label for="cf-nome" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              Nome <span class="text-rose-600">*</span>
+            </label>
+            <input
+              id="cf-nome"
+              name="nome"
+              type="text"
+              required
+              autocomplete="name"
+              placeholder="Seu nome completo"
+              class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-rn-blue focus:ring-2 focus:ring-rn-blue/20 outline-none transition"
+            />
+            <p data-error="nome" class="hidden mt-1 text-xs text-rose-600 font-medium"></p>
+          </div>
+
+          <div>
+            <label for="cf-email" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              E-mail <span class="text-rose-600">*</span>
+            </label>
+            <input
+              id="cf-email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              placeholder="seu@email.com"
+              class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-rn-blue focus:ring-2 focus:ring-rn-blue/20 outline-none transition"
+            />
+            <p data-error="email" class="hidden mt-1 text-xs text-rose-600 font-medium"></p>
+          </div>
+
+          <div>
+            <label for="cf-telefone" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              Telefone
+            </label>
+            <input
+              id="cf-telefone"
+              name="telefone"
+              type="tel"
+              autocomplete="tel"
+              placeholder="(00) 00000-0000"
+              class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-rn-blue focus:ring-2 focus:ring-rn-blue/20 outline-none transition"
+            />
+            <p data-error="telefone" class="hidden mt-1 text-xs text-rose-600 font-medium"></p>
+          </div>
+
+          <div>
+            <label for="cf-cidade" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              Cidade <span class="text-rose-600">*</span>
+            </label>
+            <input
+              id="cf-cidade"
+              name="cidade"
+              type="text"
+              required
+              autocomplete="address-level2"
+              placeholder="Sua cidade"
+              class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-rn-blue focus:ring-2 focus:ring-rn-blue/20 outline-none transition"
+            />
+            <p data-error="cidade" class="hidden mt-1 text-xs text-rose-600 font-medium"></p>
+          </div>
+
+          <div class="md:col-span-2">
+            <label for="cf-assunto" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              Assunto <span class="text-rose-600">*</span>
+            </label>
+            <input
+              id="cf-assunto"
+              name="assunto"
+              type="text"
+              required
+              placeholder="Assunto da mensagem"
+              class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-rn-blue focus:ring-2 focus:ring-rn-blue/20 outline-none transition"
+            />
+            <p data-error="assunto" class="hidden mt-1 text-xs text-rose-600 font-medium"></p>
+          </div>
+
+          <div class="md:col-span-2">
+            <label for="cf-mensagem" class="block text-sm font-semibold text-slate-700 mb-1.5">
+              Mensagem <span class="text-rose-600">*</span>
+            </label>
+            <textarea
+              id="cf-mensagem"
+              name="mensagem"
+              rows={5}
+              required
+              placeholder="Escreva sua mensagem..."
+              class="w-full px-4 py-3 rounded-lg border border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-rn-blue focus:ring-2 focus:ring-rn-blue/20 outline-none transition resize-none"
+            ></textarea>
+            <p data-error="mensagem" class="hidden mt-1 text-xs text-rose-600 font-medium"></p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <button type="submit" class="btn-primary w-full sm:w-auto">
+            <span data-label class="inline-flex items-center gap-2">
+              Enviar mensagem
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+              </svg>
+            </span>
+            <span data-loading class="hidden items-center gap-2">
+              <svg class="w-4 h-4 animate-spin" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25" />
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+              </svg>
+              Enviando...
+            </span>
+          </button>
+          <p class="text-xs text-slate-500">
+            Campos com <span class="text-rose-600 font-bold">*</span> são obrigatórios.
+          </p>
+        </div>
+
+        <div data-feedback="success" class="hidden mt-5 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-medium flex items-start gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0 mt-0.5"><path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clip-rule="evenodd"/></svg>
+          <div>
+            <p class="font-bold">Mensagem preparada!</p>
+            <p class="text-emerald-700 mt-0.5">
+              Estrutura pronta. Integre com sua API/Formspree/Resend para envio real.
+            </p>
+          </div>
+        </div>
+
+        <div data-feedback="error" class="hidden mt-5 p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-sm font-medium flex items-start gap-3">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 shrink-0 mt-0.5"><path fill-rule="evenodd" d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd"/></svg>
+          <div>
+            <p class="font-bold">Verifique os campos</p>
+            <p class="text-rose-700 mt-0.5">Há campos obrigatórios que precisam ser corrigidos.</p>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  type FieldName = 'nome' | 'email' | 'telefone' | 'cidade' | 'assunto' | 'mensagem';
+
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  if (!form) throw new Error('form not found');
+
+  const label = form.querySelector<HTMLElement>('[data-label]');
+  const loading = form.querySelector<HTMLElement>('[data-loading]');
+  const successEl = form.querySelector<HTMLElement>('[data-feedback="success"]');
+  const errorEl = form.querySelector<HTMLElement>('[data-feedback="error"]');
+
+  const setBtnLoading = (loading_: boolean) => {
+    if (!label || !loading) return;
+    label.classList.toggle('hidden', loading_);
+    loading.classList.toggle('hidden', !loading_);
+    loading.classList.toggle('inline-flex', loading_);
+  };
+
+  const showFeedback = (type: 'success' | 'error' | null) => {
+    successEl?.classList.toggle('hidden', type !== 'success');
+    errorEl?.classList.toggle('hidden', type !== 'error');
+  };
+
+  const validators: Record<FieldName, (value: string) => string> = {
+    nome: (v) => (v.trim().length < 3 ? 'Informe um nome válido (mínimo 3 caracteres).' : ''),
+    email: (v) => (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) ? 'Informe um e-mail válido.' : ''),
+    telefone: (v) => (v && v.replace(/\D/g, '').length < 10 ? 'Telefone inválido (quando informado).' : ''),
+    cidade: (v) => (v.trim().length < 2 ? 'Informe sua cidade.' : ''),
+    assunto: (v) => (v.trim().length < 3 ? 'Informe o assunto.' : ''),
+    mensagem: (v) => (v.trim().length < 10 ? 'Escreva uma mensagem (mínimo 10 caracteres).' : ''),
+  };
+
+  function setError(name: FieldName, message: string) {
+    const el = form.querySelector<HTMLElement>(`[data-error="${name}"]`);
+    const input = form.elements.namedItem(name) as HTMLElement | null;
+    if (el) {
+      el.textContent = message;
+      el.classList.toggle('hidden', !message);
+    }
+    if (input) {
+      input.classList.toggle('border-rose-400', !!message);
+      input.classList.toggle('ring-2', !!message);
+      input.classList.toggle('ring-rose-200', !!message);
+    }
+  }
+
+  const fieldNames: FieldName[] = ['nome', 'email', 'telefone', 'cidade', 'assunto', 'mensagem'];
+
+  fieldNames.forEach((n) => {
+    const input = form.elements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement | null;
+    input?.addEventListener('input', () => setError(n, validators[n](input.value)));
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    showFeedback(null);
+
+    const data = Object.fromEntries(new FormData(form));
+    let hasError = false;
+    fieldNames.forEach((n) => {
+      const val = String(data[n] ?? '');
+      const msg = validators[n](val);
+      setError(n, msg);
+      if (msg) hasError = true;
+    });
+
+    if (hasError) {
+      showFeedback('error');
+      return;
+    }
+
+    setBtnLoading(true);
+
+    // TODO: integrar API aqui (ex: fetch('/api/contato', {...}))
+    // Pronto para Formspree/Resend custom.
+    await new Promise((r) => setTimeout(r, 900));
+
+    setBtnLoading(false);
+    showFeedback('success');
+    form.reset();
+  });
+
+  // Telefone mask (BR)
+  const tel = form.elements.namedItem('telefone') as HTMLInputElement | null;
+  tel?.addEventListener('input', () => {
+    const d = tel.value.replace(/\D/g, '').slice(0, 11);
+    if (d.length <= 10) tel.value = d.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+    else tel.value = d.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+  });
+</script>

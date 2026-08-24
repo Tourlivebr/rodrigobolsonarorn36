@@ -1,0 +1,52 @@
+---
+import type { Proposal } from '@data/proposals';
+
+const { proposal } = Astro.props;
+
+interface Props {
+  proposal: Proposal;
+}
+
+const iconMap: Record<string, string> = {
+  heart: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z"/></svg>`,
+  industry: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path fill-rule="evenodd" d="M7.5 5.25a3 3 0 0 0-3 3v9.75a.75.75 0 0 1-1.5 0V8.25a4.5 4.5 0 0 1 8.97-0.509 3 3 0 0 0 5.28 2.06l2.4 2.4a1.5 1.5 0 0 1-1.06 2.56h-1.5a.75.75 0 0 0 0 1.5h1.5a3 3 0 0 0 2.122-5.122l-2.4-2.4a4.5 4.5 0 0 1-7.92-3.074A3 3 0 0 0 7.5 5.25ZM14.25 17.25v-.75h1.5v.75a2.25 2.25 0 1 1-4.5 0v-2.25a.75.75 0 0 0-1.5 0v2.25a3.75 3.75 0 1 0 7.5 0v-3a.75.75 0 0 0-1.5 0v3h-1.5Z" clip-rule="evenodd"/></svg>`,
+  shield: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path fill-rule="evenodd" d="M11.489 3.026a.75.75 0 0 1 1.022 0 41.57 41.57 0 0 1 8.011 5.158.75.75 0 0 1 .277.547v4.519c0 5.951-5.192 9.57-8.413 10.992a.75.75 0 0 1-.572 0C8.193 22.274 3 18.653 3 13.25V8.731a.75.75 0 0 1 .277-.547 41.57 41.57 0 0 1 8.012-5.158Z" clip-rule="evenodd"/></svg>`,
+  book: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7"><path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1.001-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z"/></svg>`,
+};
+
+const colorMap: Record<string, string> = {
+  heart: 'text-rose-600 bg-rose-50 ring-rose-100',
+  industry: 'text-rn-blue bg-blue-50 ring-blue-100',
+  shield: 'text-amber-700 bg-amber-50 ring-amber-100',
+  book: 'text-rn-green bg-emerald-50 ring-emerald-100',
+};
+---
+
+<article class="card p-6 md:p-8 h-full flex flex-col">
+  <div class={`inline-flex items-center justify-center w-14 h-14 rounded-2xl ring-1 mb-6 ${colorMap[proposal.icone] || colorMap.heart}`}>
+    <Fragment set:html={iconMap[proposal.icone] || iconMap.book} />
+  </div>
+
+  <span class="text-xs font-semibold uppercase tracking-wide text-rn-green mb-2">
+    Proposta Apresentada
+  </span>
+
+  <h3 class="font-display font-bold text-xl md:text-2xl text-slate-900 mb-3">
+    {proposal.titulo}
+  </h3>
+
+  <p class="text-slate-600 leading-relaxed mb-6 flex-1">
+    {proposal.resumo}
+  </p>
+
+  <a
+    href={`/propostas/${proposal.slug}/`}
+    class="btn-secondary mt-auto justify-self-start !px-5 !py-2.5 !text-sm"
+    aria-label={`Ver todas as propostas de ${proposal.titulo}`}
+  >
+    Ver propostas
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4 ml-2" aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+    </svg>
+  </a>
+</article>
