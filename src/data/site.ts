@@ -8,7 +8,7 @@ export const siteConfig = {
   locale: 'pt_BR',
   author: {
     name: 'Rodrigo Bolsonaro',
-    idade: 45,
+    idade: 46,
     cidade: 'Natal',
     estado: 'Rio Grande do Norte',
     ocupacao: 'Empresário',
@@ -17,7 +17,7 @@ export const siteConfig = {
     partido: 'AGIR',
     candidato: 'candidato ao Governo do RN - 2026',
     lema: 'Deus, Família e Rio Grande do Norte',
-    bio: 'Empresário natalense, 45 anos, cristão. Identificado politicamente com a direita e o bolsonarismo. Candidato ao Governo do Rio Grande do Norte nas eleições de 2026, ligado ao AGIR. Defende os valores de Deus, Família e Rio Grande do Norte.',
+    bio: 'Empresário natalense, 46 anos, cristão. Identificado politicamente com a direita e o bolsonarismo. Candidato ao Governo do Rio Grande do Norte nas eleições de 2026, ligado ao AGIR. Defende os valores de Deus, Família e Rio Grande do Norte.',
   },
   contact: {
     email: 'contato@rodrigobolsonarorn36.com.br',
@@ -25,8 +25,8 @@ export const siteConfig = {
     endereco: 'Natal, Rio Grande do Norte',
   },
   social: {
-    instagram: 'https://instagram.com/',
-    facebook: 'https://facebook.com/',
+    instagram: 'https://instagram.com/rodrigobolsonarorn36.com.br',
+    facebook: 'https://facebook.com/rodrigobolsonarorn36.com.br',
     whatsapp: 'https://wa.me/',
     youtube: 'https://youtube.com/',
     tiktok: 'https://tiktok.com/',
