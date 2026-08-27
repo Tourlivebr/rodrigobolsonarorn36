@@ -5,9 +5,9 @@ export interface FAQItem {
 
 export const faqItems: FAQItem[] = [
   {
-    pergunta: 'Quem é Rodrigo Bolsonaro?',
+    pergunta: 'Quem é Rodrigo de Bolsonaro?',
     resposta:
-      'Rodrigo Bolsonaro é empresário natalense, 46 anos, cristão. Identificado politicamente com a direita e bolsonarista. É candidato ao Governo do Rio Grande do Norte nas eleições de 2026, ligado ao AGIR. Seus valores são: Deus, Família e Rio Grande do Norte.',
+      'Rodrigo de Bolsonaro é empresário natalense, 46 anos, cristão. Identificado politicamente com a direita e bolsonarista. É candidato ao Governo do Rio Grande do Norte nas eleições de 2026, ligado ao AGIR. Seus valores são: Deus, Família e Rio Grande do Norte.',
   },
   {
     pergunta: 'Quais são as principais áreas do plano apresentado?',

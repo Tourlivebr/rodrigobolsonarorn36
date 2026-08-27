@@ -1,7 +1,7 @@
 {
-  "name": "Rodrigo Bolsonaro - Portal Informativo RN 2026",
-  "short_name": "Rodrigo Bolsonaro RN",
-  "description": "Portal institucional informativo sobre Rodrigo Bolsonaro, pré-candidato ao Governo do Rio Grande do Norte em 2026. Propostas, perfil e ações.",
+  "name": "Rodrigo de Bolsonaro - Portal Informativo RN 2026",
+  "short_name": "Rodrigo de Bolsonaro RN",
+  "description": "Portal institucional informativo sobre Rodrigo de Bolsonaro, pré-candidato ao Governo do Rio Grande do Norte em 2026. Propostas, perfil e ações.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
@@ -29,7 +29,7 @@
     {
       "name": "Perfil Institucional",
       "url": "/#inicio",
-      "description": "Quem é Rodrigo Bolsonaro"
+      "description": "Quem é Rodrigo de Bolsonaro"
     },
     {
       "name": "Propostas",
