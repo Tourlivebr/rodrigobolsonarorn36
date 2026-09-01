@@ -4,7 +4,7 @@ export const siteConfig = {
   description:
     'Portal informativo institucional sobre Rodrigo de Bolsonaro, candidato ao Governo do Rio Grande do Norte nas eleições de 2026. Conheça as propostas apresentadas para o RN.',
   shortName: 'Rodrigo de Bolsonaro',
-  url: 'https://rodrigobolsonaro36.com.br',
+  url: 'https://rodrigodebolsonaro36.com.br',
   locale: 'pt_BR',
   author: {
     name: 'Rodrigo de Bolsonaro',
@@ -20,13 +20,13 @@ export const siteConfig = {
     bio: 'Empresário natalense, 46 anos, cristão. Identificado politicamente com a direita e bolsonarista. Candidato ao Governo do Rio Grande do Norte nas eleições de 2026, ligado ao AGIR. Defende os valores de Deus, Família e Rio Grande do Norte.',
   },
   contact: {
-    email: 'contato@rodrigobolsonarorn36.com.br',
+    email: 'contato@rodrigodebolsonarorn36.com.br',
     telefone: '',
     endereco: 'Natal, Rio Grande do Norte',
   },
   social: {
-    instagram: 'https://instagram.com/rodrigobolsonarorn36',
-    facebook: 'https://facebook.com/rodrigobolsonarorn36',
+    instagram: 'https://instagram.com/rodrigodebolsonarorn36',
+    facebook: 'https://facebook.com/rodrigodebolsonarorn36',
     whatsapp: 'https://wa.me/',
     youtube: 'https://youtube.com/',
     tiktok: 'https://tiktok.com/',
